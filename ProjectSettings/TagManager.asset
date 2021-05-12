@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - Grabbable
-  - 
-  - 
+  - world1
+  - world2
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: world2
+    uniqueID: 2601904129
+    locked: 0
+  - name: world1
+    uniqueID: 3981659555
     locked: 0

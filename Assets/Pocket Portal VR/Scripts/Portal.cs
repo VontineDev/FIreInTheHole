@@ -104,28 +104,19 @@ public class Portal : MonoBehaviour
 #endif
     }
 
-	
-
     // Use this for initialization
     void Start () {
 		meshRenderer = GetComponent<Renderer> ();
 		meshFilter = GetComponent<MeshFilter> ();
 		meshDeformer = GetComponent<MeshDeformer> ();
-		//if(dimension1==null)
-  //      {
-		//	//dimension1.
-  //      }
-		//if (dimension2 == null)
-		//{
 
-		//}
 #if USES_OPEN_VR
         OVRCameraRig rig = GameObject.FindObjectOfType<OVRCameraRig>();
         Assert.IsNotNull(rig, "To use Open VR Portal mode you need to have an OVRCameraRig in your scene.");
         this.mainCamera = rig.leftEyeCamera;
         this.rightCamera = rig.rightEyeCamera;
 #else
-		this.mainCamera = Camera.main;
+        this.mainCamera = Camera.main;
 #endif
         Assert.IsNotNull(this.mainCamera, "Pocket Portal could not find a main camera in your scene.");
 

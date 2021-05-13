@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -6924221662523678643}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Portal Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,3 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57543ada57ad22d4e82754fa3a5712ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OVRCameraRig: {fileID: 0}
+  portalPrefab: {fileID: 1994834810077592, guid: ee8750a24a8a07f46bb925741b767b32,
+    type: 3}

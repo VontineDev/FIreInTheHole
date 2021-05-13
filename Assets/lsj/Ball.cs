@@ -6,13 +6,21 @@ public class Ball : PortalCtrl
 {
     // Start is called before the first frame update
     public float speed;
+    public MaterialCtrl mc;
     void Start()
     {
-       ballRig.AddForce(Vector3.forward * speed);
+       ballRig.AddForce(transform.forward * speed);
     }
     private void Update()
     {
-        Updates();
+       // Updates();
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "World")
+        {
+           Updates();
+        }
     }
 
 }

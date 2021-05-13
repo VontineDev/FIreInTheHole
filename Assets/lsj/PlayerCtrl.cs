@@ -5,15 +5,16 @@ using UnityEngine;
 public class PlayerCtrl : MonoBehaviour
 {
     public GameObject ball;
-    public Transform tr;
+    public Transform eye;
     public GameObject theCamera;
+    public Transform HandPos;
     // Start is called before the first frame update
     private void Update()
     {
       //  tr.position = Vector3.zero;
         if(OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
-            Instantiate(theCamera, ball.transform.position, ball.transform.rotation);//카메라 생성
+        
             CreateBall();
         }
     }
@@ -21,7 +22,18 @@ public class PlayerCtrl : MonoBehaviour
 
     public void CreateBall()
     {
-        Instantiate(ball, transform.position, transform.rotation);
+     GameObject b=  Instantiate(ball, HandPos.position, HandPos.localRotation);
         //ball.GetComponent<>
+        GameObject obja = Instantiate(theCamera, transform.position, eye.rotation);//카메라 생성
+        MaterialCtrl mc = b.GetComponent<Ball>().mc;
+        mc.SetInit();
+        Debug.Log(mc.rt);
+        obja.GetComponent<Camera>().targetTexture = mc.rt;
     }
+    public void test()
+    {
+
+
+    }
+
 }

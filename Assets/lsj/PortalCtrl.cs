@@ -32,14 +32,19 @@ public abstract class PortalCtrl:MonoBehaviour
         {
             return;
         }
-        if (distance <= GetDistance())
-        {
-            Debug.Log("포탈생성");
-            
-            OffRenderer();
-           // Instantiate(portal, ball.transform.position, ball.transform.rotation);
-            isCreate = true;
-        }
+        Debug.Log("포탈생성");
+
+        OffRenderer();
+        // Instantiate(portal, ball.transform.position, ball.transform.rotation);
+        isCreate = true;
+        //if (distance <= GetDistance())
+        //{
+        //    Debug.Log("포탈생성");
+
+        //    OffRenderer();
+        //   // Instantiate(portal, ball.transform.position, ball.transform.rotation);
+        //    isCreate = true;
+        //}
     }
 
     public float GetDistance()

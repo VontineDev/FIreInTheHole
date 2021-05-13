@@ -6,14 +6,14 @@ public class PlayerCtrl : MonoBehaviour
 {
     public GameObject ball;
     public Transform tr;
-    public Dimension d1;
-    public Dimension d2;
+    public GameObject theCamera;
     // Start is called before the first frame update
     private void Update()
     {
       //  tr.position = Vector3.zero;
-        if(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+        if(OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
+            Instantiate(theCamera, ball.transform.position, ball.transform.rotation);//카메라 생성
             CreateBall();
         }
     }

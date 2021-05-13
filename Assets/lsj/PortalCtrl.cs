@@ -10,11 +10,12 @@ public abstract class PortalCtrl:MonoBehaviour
     public GameObject ball;
     public Rigidbody ballRig;
     public MeshRenderer render;
-
+    public GameObject theCamera;
+    public GameObject portal;
     /// <summary>
     /// 포탈
     /// </summary>
-    public GameObject portal;
+    //public GameObject portal;
     /// <summary>
     /// 생성될 거리크기
     /// </summary>
@@ -34,7 +35,9 @@ public abstract class PortalCtrl:MonoBehaviour
         if (distance <= GetDistance())
         {
             Debug.Log("포탈생성");
+            
             OffRenderer();
+           // Instantiate(portal, ball.transform.position, ball.transform.rotation);
             isCreate = true;
         }
     }

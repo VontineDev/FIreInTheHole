@@ -21,10 +21,12 @@ public class ButtonManager : MonoBehaviour
             if(isUi == false)
             {
                 ui.SetActive(true);
+                isUi = true;
             }
             else
             {
                 ui.SetActive(false);
+                isUi = false;
             }
             
         }

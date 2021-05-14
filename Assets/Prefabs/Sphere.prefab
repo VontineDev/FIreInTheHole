@@ -144,3 +144,9 @@ MonoBehaviour:
   OVRCameraRig: {fileID: 0}
   quadPrefab: {fileID: 3438541025883619542, guid: 3d9f05f4c832a0a4c96935dec74e01f3,
     type: 3}
+  cameraPrefab: {fileID: 1490853707049639530, guid: fb4a33c454a36714facf4cf65e454df8,
+    type: 3}
+  originalCameraTransform: {fileID: 0}
+  World2: {fileID: 0}
+  copyRenderTexture: {fileID: 8400000, guid: 9148e8390fd951140a9e6582c177507c, type: 2}
+  materialPrefab: {fileID: 2100000, guid: f0116cfd039115d4a8810e9da2be8905, type: 2}

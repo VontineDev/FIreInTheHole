@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class CameraSync : MonoBehaviour
 {
-
-    public Transform originCameraTrasnfrom;
+    [SerializeField]
+    GameObject originCamera;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        transform.position = transform.position + originCameraTrasnfrom.position;
-        transform.rotation = originCameraTrasnfrom.rotation;
-    }
+        originCamera = GameObject.FindGameObjectWithTag("Tracking");
 
-    // Update is called once per frame
-    void Update()
-    {
+        this.transform.rotation = originCamera.transform.localRotation;
 
     }
 }

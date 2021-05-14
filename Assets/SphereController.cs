@@ -9,15 +9,21 @@ public class SphereController : MonoBehaviour
 
     [SerializeField]
     GameObject quadPrefab;
-
+    [SerializeField]
+    GameObject cameraPrefab;
     [SerializeField]
     Transform originalCameraTransform;
     [SerializeField]
     Transform World2;
+    [SerializeField]
+    RenderTexture copyRenderTexture;
+    [SerializeField]
+    Material materialPrefab;
     // Start is called before the first frame update
     void Start()
     {
         OVRCameraRig = FindObjectOfType<OVRCameraRig>();
+        World2 = GameObject.FindGameObjectWithTag("World2").transform;
 
         StartCoroutine(DestroySelf());
     }
@@ -28,7 +34,7 @@ public class SphereController : MonoBehaviour
         {
             time += Time.deltaTime;
             yield return null;
-            if (Vector3.Distance(this.transform.position, OVRCameraRig.transform.position) > 15)
+            if (Vector3.Distance(this.transform.position, OVRCameraRig.transform.position) > 5)
             {
                 //var portal = Instantiate(portalPrefab);
                 //var ps = portal.GetComponentInChildren<Portal>();
@@ -40,8 +46,18 @@ public class SphereController : MonoBehaviour
                 var quad = Instantiate(quadPrefab);
                 quad.transform.position = this.transform.position;
                 quad.transform.LookAt(OVRCameraRig.transform);
-                //var cam = Instantiate(Camera.main,)
+                quad.transform.Rotate(0, 180f, 0);
+                RenderTexture renderTexture = new RenderTexture(1024, 1024, 16, RenderTextureFormat.ARGB32);
 
+                renderTexture.Create();
+                var meshrend = quad.GetComponent<MeshRenderer>();
+                meshrend.material = new Material(materialPrefab);
+                meshrend.material.mainTexture = renderTexture;
+                var camObject = Instantiate(cameraPrefab, World2.transform.position, World2.transform.rotation);
+                var camera = camObject.GetComponent<Camera>();
+
+                camera.targetTexture = renderTexture;
+                camera.fieldOfView = 12f;
                 break;
             }
         }

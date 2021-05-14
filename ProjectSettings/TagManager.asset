@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Portal Ignore
   - World
+  - World2
+  - Tracking
   layers:
   - Default
   - TransparentFX

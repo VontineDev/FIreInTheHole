@@ -8,32 +8,44 @@ public class SphereController : MonoBehaviour
     OVRCameraRig OVRCameraRig;
 
     [SerializeField]
-    GameObject portalPrefab;
+    GameObject quadPrefab;
+
+    [SerializeField]
+    Transform originalCameraTransform;
+    [SerializeField]
+    Transform World2;
     // Start is called before the first frame update
     void Start()
     {
         OVRCameraRig = FindObjectOfType<OVRCameraRig>();
+
         StartCoroutine(DestroySelf());
     }
     IEnumerator DestroySelf()
     {
-        while (true)
+        float time = 0;
+        while (time < 5f)
         {
+            time += Time.deltaTime;
             yield return null;
-            if (Vector3.Distance(this.transform.position, OVRCameraRig.transform.position) > 10)
+            if (Vector3.Distance(this.transform.position, OVRCameraRig.transform.position) > 15)
             {
-                var portal = Instantiate(portalPrefab);
-                var ps = portal.GetComponentInChildren<Portal>();
-                var dim = FindObjectsOfType<Dimension>();
-                ps.dimension1 = dim[1];
-                ps.dimension2 = dim[0];
-                portal.transform.position = this.transform.position;
-                portal.transform.LookAt(OVRCameraRig.transform);
+                //var portal = Instantiate(portalPrefab);
+                //var ps = portal.GetComponentInChildren<Portal>();
+                //var dim = FindObjectsOfType<Dimension>();
+                //ps.dimension1 = dim[1];
+                //ps.dimension2 = dim[0];
+                //portal.transform.position = this.transform.position;
+                //portal.transform.LookAt(OVRCameraRig.transform);
+                var quad = Instantiate(quadPrefab);
+                quad.transform.position = this.transform.position;
+                quad.transform.LookAt(OVRCameraRig.transform);
+                //var cam = Instantiate(Camera.main,)
 
                 break;
             }
         }
-        yield return new WaitForSeconds(5f);
+        // yield return new WaitForSeconds(5f);
         Destroy(this.gameObject);
     }
     private void OnTriggerExit(Collider other)

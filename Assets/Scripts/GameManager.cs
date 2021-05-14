@@ -30,12 +30,12 @@ public class GameManager : MonoBehaviour
         while (true)
         {
 
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
+            if (OVRInput.GetDown(OVRInput.RawButton.LHandTrigger))
             {
                 SpawnBall(leftHand);
                 print("PrimaryHandTrigger");
             }
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+            if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger))
             {
                 SpawnBall(rightHand);
                 print("SecondaryHandTrigger");
